@@ -1,11 +1,7 @@
 package main
 
 import "fmt"
-
-type ListNode struct {
-	Val int
-	Next *ListNode
-}
+import . "./list"
 
 func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
     if (l1 == nil) {
