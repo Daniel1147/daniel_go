@@ -1,7 +1,7 @@
 package main
 
 import "fmt"
-import . "./myApp"
+import . "./tree"
 
 var ansList [][]int
 
@@ -32,7 +32,7 @@ func addNode(node *TreeNode, level int) {
 func main() {
     treeNode := Sample()
     treeNode.Show()
-    fmt.Println(levelOrderBottom(treeNode))
+    fmt.Println(levelOrder(treeNode))
 
 	return
 }

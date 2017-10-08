@@ -1,4 +1,4 @@
-package myApp
+package tree
 
 import "fmt"
 

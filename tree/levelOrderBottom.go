@@ -1,7 +1,7 @@
 package main
 
 import "fmt"
-import . "./myApp"
+import . "./tree"
 
 var ansList [][]int
 
