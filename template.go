@@ -1,9 +1,9 @@
 package main
 
 import "fmt"
-import "./myApp"
 
 func main() {
+    fmt.Println("go go go")
 
 	return
 }
