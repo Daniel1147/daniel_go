@@ -3,54 +3,37 @@ package main
 import "fmt"
 import . "./myApp"
 
+var ansList [][]int
+
 func levelOrderBottom(root *TreeNode) [][]int {
-    var result, leftResult, rightResult [][]int
-    if root == nil {
-        return result
-    }
-    if (root.Left != nil) {
-        leftResult = levelOrderBottom(root.Left)
-    }
+    ansList = make([][]int, 0)
+    addNode(root, 0)
 
-    if (root.Right != nil) {
-        rightResult = levelOrderBottom(root.Right)
+    // return reversed ansList
+    ansListLen := len(ansList)
+    result := make([][]int, len(ansList))
+    for i := range ansList {
+        result[i] = ansList[ansListLen - i - 1]
     }
 
-    result = myMerge(leftResult, rightResult)
-
-    // add a layer
-    result = append(result, []int{root.Val})
     return result
 }
 
-func myMerge(s1, s2 [][]int) [][]int {
-    // fmt.Println("merge", s1, s2)
-    var result [][]int
-    s1Len := len(s1)
-    s2Len := len(s2)
-    var longLen int
-
-    if (s1Len > s2Len) {
-        longLen = s1Len
-    } else {
-        longLen = s2Len
+func addNode(node *TreeNode, level int) {
+    if node == nil {
+        return
     }
 
-    for i := 0; i < longLen; i++ {
-        var currentLevel []int
-        i1 := s1Len - longLen + i
-        if (i1 >= 0) {
-            currentLevel = append(currentLevel, s1[i1]...)
-        }
-        i2 := s2Len - longLen + i
-        if (i2 >= 0) {
-            currentLevel = append(currentLevel, s2[i2]...)
-        }
-        result = append(result, currentLevel)
+    if len(ansList) <= level {
+        ansList = append(ansList, []int{})
     }
 
-    // fmt.Println("result", result)
-    return result
+    addNode(node.Left, level + 1)
+    addNode(node.Right, level + 1)
+
+    ansList[level] = append(ansList[level], node.Val)
+
+    return
 }
 
 func main() {
