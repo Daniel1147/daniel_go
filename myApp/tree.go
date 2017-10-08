@@ -9,10 +9,11 @@ type TreeNode struct {
 }
 
 func Sample() *TreeNode {
-    root := newTreeNode(1)
-    root.Left = newTreeNode(2)
-    // root.Left.Left = newTreeNode(3)
-    root.Right = newTreeNode(4)
+    root := newTreeNode(3)
+    root.Left = newTreeNode(9)
+    root.Right = newTreeNode(20)
+    root.Right.Left = newTreeNode(15)
+    root.Right.Right = newTreeNode(7)
 
     return root
 }
