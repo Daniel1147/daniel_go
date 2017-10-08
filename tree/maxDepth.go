@@ -1,7 +1,7 @@
 package main
 
 import "fmt"
-import . "./tree"
+import . "github.com/Daniel1147/tree"
 
 func maxDepth(root *TreeNode) int {
     if (root == nil) {

@@ -1,7 +1,7 @@
 package main
 
 import "fmt"
-import . "./tree"
+import . "github.com/Daniel1147/tree"
 
 func isSymmetric(root *TreeNode) bool {
     if root == nil {

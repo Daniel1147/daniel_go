@@ -1,6 +1,6 @@
 package main
 
-import . "./tree"
+import . "github.com/Daniel1147/tree"
 
 func sortedArrayToBST(nums []int) *TreeNode {
     var root *TreeNode
