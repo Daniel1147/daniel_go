@@ -10,20 +10,28 @@ func minDepth(root *TreeNode) int {
         return depth
     }
     currentList := []*TreeNode{root}
+    currentListLen := 1
     depth++
     for {
-        newList := []*TreeNode{}
+        newList := make([]*TreeNode, currentListLen * 2)
+        currentListLen = 0
         for _, node := range currentList {
+            if node == nil {
+                break
+            }
             if node.Left == nil && node.Right == nil {
                 return depth
             }
 
             if (node.Left != nil) {
-                newList = append(newList, node.Left)
+                // newList = append(newList, node.Left)
+                newList[currentListLen] = node.Left
+                currentListLen++
             }
 
             if (node.Right != nil) {
-                newList = append(newList, node.Right)
+                newList[currentListLen] = node.Right
+                currentListLen++
             }
         }
         currentList = newList
