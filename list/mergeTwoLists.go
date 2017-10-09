@@ -1,6 +1,6 @@
 package main
 
-import "fmt"
+// import "fmt"
 import . "github.com/Daniel1147/linkList"
 
 func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
@@ -39,15 +39,18 @@ func buildList(arr []ListNode) *ListNode {
     return firstNode
 }
 
-func dumpList(node *ListNode) []string {
+func dumpList(node *ListNode) []int {
+    var result []int
+
     for {
         if (node == nil) {
             break
         }
-        fmt.Println(node.Val)
+        // fmt.Println(node.Val)
+        result = append(result, node.Val)
         node = node.Next
     }
-    return []string{}
+    return result
 }
 
 func main() {
