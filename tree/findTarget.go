@@ -36,14 +36,18 @@ func findTargetHelper(node *TreeNode, k int, root *TreeNode) bool {
         return true
     }
 
-    leftResult := findTargetHelper(node.Left, k, root)
-    if leftResult == true {
-        return true
+    if k <= node.Val {
+        leftResult := findTargetHelper(node.Left, k, root)
+        if leftResult == true {
+            return true
+        }
     }
 
-    rightResult := findTargetHelper(node.Right, k, root)
-    if rightResult == true {
-        return true
+    if k >= node.Val {
+        rightResult := findTargetHelper(node.Right, k, root)
+        if rightResult == true {
+            return true
+        }
     }
 
     return false
