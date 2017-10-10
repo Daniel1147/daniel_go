@@ -11,31 +11,34 @@ func findSecondMinimumValue(root *TreeNode) int {
         return -1
     }
 
-    if root.Left.Val != root.Val {
-        return root.Left.Val
+    var leftSecondMin, rightSecondMin int
+
+    if (root.Left.Val == root.Val) {
+        leftSecondMin = findSecondMinimumValue(root.Left)
+    } else {
+        leftSecondMin = root.Left.Val
     }
 
-    if root.Right.Val != root.Val {
-        return root.Right.Val
+    if (root.Right.Val == root.Val) {
+        rightSecondMin = findSecondMinimumValue(root.Right)
+    } else {
+        rightSecondMin = root.Right.Val
     }
 
-    leftSecondMin := findSecondMinimumValue(root.Left)
-    rightSecondMin := findSecondMinimumValue(root.Right)
-
-    if (leftSecondMin == -1 && rightSecondMin == -1) {
+    if leftSecondMin == -1 && rightSecondMin == -1 {
         return -1
     }
 
-    if (leftSecondMin == -1 && rightSecondMin != -1) {
+    if leftSecondMin == -1 {
         return rightSecondMin
     }
 
-    if (rightSecondMin == -1 && leftSecondMin != -1) {
+    if rightSecondMin == -1 {
         return leftSecondMin
     }
 
     smaller := leftSecondMin
-    if smaller > rightSecondMin {
+    if (smaller > rightSecondMin) {
         smaller = rightSecondMin
     }
 
