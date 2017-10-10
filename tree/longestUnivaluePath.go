@@ -44,7 +44,6 @@ func realLUP (
     }
 
     if (rightLen > currentLen && leftLen > currentLen) {
-        seriesLen = 0
         maxLen = rightLen + leftLen
         // fmt.Println(node.Val, maxLen)
     }
