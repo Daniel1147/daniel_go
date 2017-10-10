@@ -3,30 +3,33 @@ package tree
 // import "fmt"
 import . "github.com/Daniel1147/tree"
 
-var nums []int
+var remainMap map[int]int
 
 func findTarget(root *TreeNode, k int) bool {
-    nums = make([]int, 0)
-    buildSliceFromTree(root)
-    remainMap := make(map[int]int)
-    for index, value := range nums {
-        remain := k - value
-        _, exist := remainMap[remain]
-        if (exist) {
-            return true
-        }
-        remainMap[value] = index
-    }
+    remainMap = make(map[int]int)
 
-    return false
+    return findTargetHelper(root, k)
 }
 
-func buildSliceFromTree(root *TreeNode) {
-    if (root == nil) {
-        return
+func findTargetHelper(node *TreeNode, target int) bool {
+    if node == nil {
+        return false
+    }
+    remain := target - node.Val
+    _, exist := remainMap[node.Val]
+    if (exist == true) {
+        return true
     }
 
-    buildSliceFromTree(root.Left)
-    nums = append(nums, root.Val)
-    buildSliceFromTree(root.Right)
+    remainMap[remain] = 1
+    leftResult := findTargetHelper(node.Left, target)
+    if leftResult == true {
+        return true
+    }
+
+    rightResult := findTargetHelper(node.Right, target)
+    if rightResult == true {
+        return true
+    }
+    return false
 }
