@@ -10,6 +10,7 @@ func TestLongestUnivaluePath(t *testing.T) {
         expected int
     } {
         sample1(),
+        sample2(),
     }
 
     for _, testCase := range cases {
@@ -45,5 +46,20 @@ func sample1() (result struct {
 
     result.root = root
     result.expected = 5
+    return
+}
+
+func sample2() (result struct {
+    root *TreeNode
+    expected int
+}) {
+    root := NewTreeNode(1)
+    root.Left = NewTreeNode(1)
+    root.Right = NewTreeNode(5)
+    root.Left.Left = NewTreeNode(1)
+    root.Left.Right = NewTreeNode(2)
+
+    result.root = root
+    result.expected = 2
     return
 }
