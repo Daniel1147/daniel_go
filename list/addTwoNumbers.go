@@ -28,7 +28,8 @@ func addTwoList(l1 *ListNode, l2 *ListNode) *ListNode {
         }
         nextVal = currentVal / 10
         currentVal = currentVal % 10
-        newNode = newListNode(currentVal)
+        // newNode = newListNode(currentVal)
+        newNode = &ListNode{currentVal, nil}
 
         if root == nil {
             root = newNode
@@ -39,34 +40,11 @@ func addTwoList(l1 *ListNode, l2 *ListNode) *ListNode {
         }
     }
     if nextVal != 0 {
-        newNode = newListNode(nextVal)
+        // newNode = newListNode(nextVal)
+        newNode = &ListNode{nextVal, nil}
         lastNode.Next = newNode
         lastNode = newNode
     }
 
     return root
-}
-
-func newListNode(n int) *ListNode {
-    return &ListNode{n, nil}
-}
-
-func reverseList(root *ListNode) *ListNode {
-    if root == nil {
-        return root
-    }
-
-    var previous, current, next *ListNode
-    previous = nil
-    current = root
-    next = current.Next
-    for next != nil {
-        current.Next = previous
-        previous = current
-        current = next
-        next = current.Next
-    }
-    current.Next = previous
-
-    return current
 }
