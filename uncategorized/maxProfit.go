@@ -9,11 +9,10 @@ func maxProfit(prices []int) int {
 
     lessNum = prices[0]
     for _, v := range prices {
-        if v - lessNum > max {
-            max = v - lessNum
-        }
         if v < lessNum {
             lessNum = v
+        } else if v - lessNum > max {
+            max = v - lessNum
         }
     }
 
