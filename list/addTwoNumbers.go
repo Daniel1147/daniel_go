@@ -26,9 +26,13 @@ func addTwoList(l1 *ListNode, l2 *ListNode) *ListNode {
             l1 = l1.Next
             l2 = l2.Next
         }
-        nextVal = currentVal / 10
-        currentVal = currentVal % 10
-        // newNode = newListNode(currentVal)
+        if currentVal > 9 {
+            nextVal = 1
+            currentVal -= 10
+        } else {
+            nextVal = 0
+        }
+
         newNode = &ListNode{currentVal, nil}
 
         if root == nil {
@@ -40,7 +44,6 @@ func addTwoList(l1 *ListNode, l2 *ListNode) *ListNode {
         }
     }
     if nextVal != 0 {
-        // newNode = newListNode(nextVal)
         newNode = &ListNode{nextVal, nil}
         lastNode.Next = newNode
         lastNode = newNode
