@@ -7,11 +7,9 @@ type NumArray struct {
 
 func Constructor(nums []int) NumArray {
     leftSum := make([]int, len(nums) + 1)
-    sum := 0
     leftSum[0] = 0
     for i, v := range nums {
-        sum += v
-        leftSum[i + 1] = sum
+        leftSum[i + 1] = leftSum[i] + v
     }
     result := NumArray{leftSum}
     return result
