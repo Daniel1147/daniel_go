@@ -2,12 +2,12 @@ package dp
 
 // import "fmt"
 
-var board [][]int
+var board [][]float64
 var wayList [][]int
 
 func knightProbability(N int, K int, r int, c int) float64 {
     initBoard(N)
-    board[r][c] = 1
+    board[r][c] = 1.0
     boardIterate(N, K)
     sum := sumBoard(N)
     total := 1.0
@@ -22,9 +22,9 @@ func knightProbability(N int, K int, r int, c int) float64 {
 }
 
 func initBoard(n int) {
-    board = make([][]int, n)
+    board = make([][]float64, n)
     for i := 0; i < n; i++{
-        board[i] = make([]int, n)
+        board[i] = make([]float64, n)
     }
 
     wayList = [][]int{
@@ -41,9 +41,9 @@ func initBoard(n int) {
 
 func boardIterate(n int, k int) {
     for j := 0; j < k; j++ {
-        newBoard := make([][]int, n)
+        newBoard := make([][]float64, n)
         for i := 0; i < n; i++{
-            newBoard[i] = make([]int, n)
+            newBoard[i] = make([]float64, n)
         }
 
         for i := range board {
@@ -55,7 +55,7 @@ func boardIterate(n int, k int) {
     }
 }
 
-func addBoard(newBoard [][]int, n int, num int, r int, c int) {
+func addBoard(newBoard [][]float64, n int, num float64, r int, c int) {
     for _, way := range wayList {
         tmp_r := r + way[0]
         tmp_c := c + way[1]
@@ -66,12 +66,12 @@ func addBoard(newBoard [][]int, n int, num int, r int, c int) {
 }
 
 func sumBoard(n int) float64 {
-    sum := 0
+    sum := 0.0
     for i := 0; i < n; i++ {
         for j := 0; j < n; j++{
             sum += board[i][j]
         }
     }
 
-    return float64(sum)
+    return sum
 }
