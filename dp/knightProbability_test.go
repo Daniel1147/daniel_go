@@ -15,6 +15,7 @@ func TestKnightProbability(t *testing.T) {
     testList := []TestCase{
         case1(),
         case2(),
+        case3(),
     }
 
     for _, testCase := range testList {
@@ -47,6 +48,18 @@ func case2() TestCase {
         0,
         0,
         float64(4.0 / 64.0),
+    }
+
+    return testCase
+}
+
+func case3() TestCase {
+    testCase := TestCase{
+        8,
+        30,
+        6,
+        4,
+        0.00019,
     }
 
     return testCase
