@@ -3,6 +3,8 @@ package dp
 import "testing"
 import "fmt"
 
+var delta = 0.000001
+
 type TestCase struct {
     size int
     moveNum int
@@ -22,7 +24,7 @@ func TestKnightProbability(t *testing.T) {
         expected := testCase.expected
         result := knightProbability(testCase.size, testCase.moveNum, testCase.startX, testCase.startY)
 
-        if (expected != result) {
+        if ((expected - result) * (expected - result) > delta * delta) {
             errorMsg := fmt.Sprintf("\nresult: %v\nexpected: %v\n", result, expected)
             t.Errorf(errorMsg)
         }
