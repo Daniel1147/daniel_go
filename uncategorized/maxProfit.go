@@ -20,6 +20,7 @@ func maxProfit(prices []int) int {
 }
 
 func maxProfit2(prices []int) int {
+    var currentPrice, lastPrice int
     profitSum := 0
     priceNum := len(prices)
 
@@ -27,10 +28,10 @@ func maxProfit2(prices []int) int {
         return profitSum
     }
 
-    lastPrice := prices[0]
+    lastPrice = prices[0]
     minPrice := prices[0]
     for i := 1; i < priceNum; i++ {
-        currentPrice := prices[i]
+        currentPrice = prices[i]
         if (currentPrice < lastPrice) {
             profitSum += lastPrice - minPrice
             minPrice = currentPrice
