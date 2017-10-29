@@ -18,3 +18,29 @@ func maxProfit(prices []int) int {
 
     return max
 }
+
+func maxProfit2(prices []int) int {
+    profitSum := 0
+    priceNum := len(prices)
+
+    if (priceNum <= 1) {
+        return profitSum
+    }
+
+    lastPrice := prices[0]
+    minPrice := prices[0]
+    for i := 1; i < priceNum; i++ {
+        currentPrice := prices[i]
+        if (currentPrice < lastPrice) {
+            profitSum += lastPrice - minPrice
+            minPrice = currentPrice
+        } else {
+        }
+
+        lastPrice = currentPrice
+    }
+
+    profitSum += lastPrice - minPrice
+
+    return profitSum
+}
