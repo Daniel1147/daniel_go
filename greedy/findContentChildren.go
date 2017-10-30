@@ -1,10 +1,14 @@
 package greedy
 
+import (
+	"sort"
+)
+
 func findContentChildren(g []int, s []int) int {
 	var i, child, lastCookie, contentCount, cookieLen int
 	cookieLen = len(s)
-	g = sort(g)
-	s = sort(s)
+	mySort(g)
+	mySort(s)
 
 	// fmt.Println(g)
 	// fmt.Println(s)
@@ -29,8 +33,9 @@ func findContentChildren(g []int, s []int) int {
 	return contentCount
 }
 
-func sort(nums []int) []int {
-	return bbsort(nums)
+func mySort(nums []int) {
+	sort.Ints(nums)
+	// bbsort(nums)
 }
 
 func bbsort(nums []int) []int {
