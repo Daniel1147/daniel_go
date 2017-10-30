@@ -5,32 +5,22 @@ import (
 )
 
 func findContentChildren(g []int, s []int) int {
-	var i, child, lastCookie, contentCount, cookieLen int
-	cookieLen = len(s)
+	var i, j int
 	mySort(g)
 	mySort(s)
 
 	// fmt.Println(g)
 	// fmt.Println(s)
 
-	lastCookie = -1
-
-	contentCount = 0
-
-	for _, child = range g {
-		// find suitable cookie
-		for i = lastCookie + 1; i < cookieLen; i++ {
-			if child > s[i] {
-
-			} else {
-				contentCount++
-				lastCookie = i
-				break
-			}
+	for i < len(g) && j < len(s) {
+		if g[i] <= s[j] {
+			i++
 		}
+
+		j++
 	}
 
-	return contentCount
+	return i
 }
 
 func mySort(nums []int) {
